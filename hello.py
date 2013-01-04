@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 
@@ -6,8 +6,9 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
-    return 'hello world yo'
+@app.route("/<name>")
+def hello(name=None):
+    return render_template('hello.html', name=name)
 
 
 if __name__ == "__main__":
